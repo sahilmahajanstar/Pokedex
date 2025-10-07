@@ -1,4 +1,4 @@
-# UI Assessment - Pokédex (Senior)
+# Pokédex
 This is a small application that will leverage various frontend technologies to assess your aptitude. This is a take home assignment and can be done at your own pace. Your recruiter will communicate with you when you should turn this assessment in.
 
 ## Requirements
