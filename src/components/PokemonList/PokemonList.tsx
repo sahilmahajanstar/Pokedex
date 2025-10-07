@@ -9,16 +9,17 @@ import { useNavigate } from 'react-router-dom';
 export const PokemonRowInfo = ({ pokemon }: { pokemon: Pokemon }) => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const onClick = useCallback(() => navigate(`/pokemon/${pokemon.id}`), [navigate, pokemon.id]);
+  const onClick = useCallback(
+    () => navigate(`/pokemon/${pokemon.id}`),
+    [navigate, pokemon.id]
+  );
   return (
-    <div
-      className={classes.rowInfo}
-      key={pokemon.id}
-      onClick={onClick}
-    >
+    <div className={classes.rowInfo} key={pokemon.id} onClick={onClick}>
       <div className={classes.number}>{pokemon.number}</div>
       <div className={classes.name}>{pokemon.name}</div>
-      <img className={classes.image} src={pokemon.image} alt={pokemon.name} />
+      <div className={classes.imageContainer}>
+        <img className={classes.image} src={pokemon.image} alt={pokemon.name} />
+      </div>
       <div className={classes.types}>
         <Tiles types={pokemon.types} color={pokemonColorOptions.types} />
       </div>
@@ -95,19 +96,27 @@ const useStyles = createUseStyles(
       flex: 1,
       fontWeight: 600,
       color: appColors.primaryText,
+      textAlign: 'left',
+    },
+    imageContainer: {
+      flex: '0 0 300px',
+      height: '100px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     image: {
-      width: '100px',
-      height: '100px',
-      flex: 1,
-      margin: '0 12px',
+      maxWidth: '100%',
+      maxHeight: '100%',
       objectFit: 'contain',
       filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.4))',
     },
     types: {
       flex: 1,
       color: appColors.primaryText,
-      fontSize: '14px',
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
     },
     headerRow: {
       display: 'flex',
@@ -134,7 +143,8 @@ const useStyles = createUseStyles(
     },
     colName: {
       flex: 1,
-      textAlign: 'center',
+      textAlign: 'left',
+      marginLeft: '10px',
       color: appColors.primaryText,
     },
     colImage: {
@@ -144,7 +154,7 @@ const useStyles = createUseStyles(
     },
     colTypes: {
       flex: 1,
-      textAlign: 'left',
+      textAlign: 'center',
       color: appColors.primaryText,
     },
   },
