@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-import React from 'react';
-import { createUseStyles } from 'react-jss';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
+import clsx from 'clsx';
+import { createUseStyles } from 'react-jss';
 
 interface NavOptionProps {
   to: string;
@@ -9,12 +9,9 @@ interface NavOptionProps {
   name: string;
 }
 
-export const NavOption: React.FC<NavOptionProps> = ({
-  to,
-  icon,
-  name,
-  children,
-}) => {
+export const NavOption: React.FC<
+  NavOptionProps & { children: React.ReactNode }
+> = ({ to, icon, name, children }) => {
   const classes = useStyles();
 
   const getRootClassName = ({ isActive }: { isActive: boolean }) => {

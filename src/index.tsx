@@ -1,7 +1,8 @@
 import './index.css';
+
+import App from './app/App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './app/App';
 import reportWebVitals from './app/reportWebVitals';
 
 const rootElement = document.getElementById('root'); // Ensure the 'root' id matches the div in index.html

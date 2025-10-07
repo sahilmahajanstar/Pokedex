@@ -1,11 +1,13 @@
-import React from 'react';
-import { createUseStyles } from 'react-jss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Home, ListPage, PokemonDetailsDialog } from '../screens';
+
+import { ApolloProvider } from '@apollo/client/react';
 import { LayoutProvider } from '../contexts';
 import { Nav } from '../components';
-import { ApolloProvider } from '@apollo/client';
+import React from 'react';
+import { appColors } from 'src/color';
 import { client } from './client';
-import { ListPage, Home } from '../screens';
+import { createUseStyles } from 'react-jss';
 
 function App() {
   const classes = useStyles();
@@ -20,6 +22,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/pokemon" element={<ListPage />} />
+                  <Route path="/pokemon/:id" element={<PokemonDetailsDialog />} />
                 </Routes>
               </div>
             </div>
@@ -33,7 +36,7 @@ function App() {
 const useStyles = createUseStyles(
   {
     root: {
-      background: '#171E2b',
+      background: appColors.background,
       minHeight: '100vh',
       minWidth: '100vw',
       height: '100%',

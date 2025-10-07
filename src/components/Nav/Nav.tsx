@@ -1,8 +1,9 @@
-import React from 'react';
-import { createUseStyles } from 'react-jss';
 import { useLayout, useToggleNav } from '../../contexts';
-import clsx from 'clsx';
+
 import { NavOption } from './NavOption';
+import React from 'react';
+import clsx from 'clsx';
+import { createUseStyles } from 'react-jss';
 
 export const Nav = () => {
   const { navCollapsed } = useLayout();

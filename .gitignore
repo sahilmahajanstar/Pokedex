@@ -1,0 +1,10 @@
+node_modules
+.history
+dist
+.env
+DS_Store
+yarn-error.log
+.vscode
+.idea
+yarn.lock
+package-lock.json
