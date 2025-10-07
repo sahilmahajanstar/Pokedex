@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { appColors, pokemonColorOptions } from 'src/color';
 
 import { Pokemon } from '../../hooks/useGetPokemons';
@@ -9,12 +9,12 @@ import { useNavigate } from 'react-router-dom';
 export const PokemonRowInfo = ({ pokemon }: { pokemon: Pokemon }) => {
   const classes = useStyles();
   const navigate = useNavigate();
-
+  const onClick = useCallback(() => navigate(`/pokemon/${pokemon.id}`), [navigate, pokemon.id]);
   return (
     <div
       className={classes.rowInfo}
       key={pokemon.id}
-      onClick={() => navigate(`/pokemon/${pokemon.id}`)}
+      onClick={onClick}
     >
       <div className={classes.number}>{pokemon.number}</div>
       <div className={classes.name}>{pokemon.name}</div>
