@@ -4,10 +4,10 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
+import React, { useCallback } from 'react';
 import { appColors, pokemonColorOptions } from 'src/color';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import React from 'react';
 import { Tiles } from 'src/components/Tiles';
 import { createUseStyles } from 'react-jss';
 import { usePokemonDetails } from '../hooks/usePokemonDetails';
@@ -18,9 +18,13 @@ export const PokemonDetailsDialog: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { pokemon, loading, error } = usePokemonDetails(id);
 
-  const handleClose = () => {
-    navigate(-1);
-  };
+  const handleClose = useCallback(() => {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/pokemon', { replace: true });
+    }
+  }, [navigate]);
 
   return (
     <Dialog

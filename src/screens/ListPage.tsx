@@ -1,6 +1,7 @@
 import { Pokemon, useGetPokemons } from 'src/hooks/useGetPokemons';
 import React, { useMemo, useState } from 'react';
 
+import { Outlet } from 'react-router-dom';
 import { PokemonList } from '../components';
 import { SearchBox } from 'src/components/SearchBox';
 import { appColors } from 'src/color';
@@ -34,6 +35,7 @@ export const ListPage = () => {
 
       {/* Pokémon List: Seperate Out presentational component. Passed only list to render */}
       <PokemonList pokemons={filteredPokemons} />
+      <Outlet />
     </div>
   );
 };
